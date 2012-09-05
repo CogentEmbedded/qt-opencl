@@ -110,6 +110,8 @@ public:
     void setLocalWorkSize(size_t width, size_t height);
     void setLocalWorkSize(size_t width, size_t height, size_t depth);
 
+    void setGlobalWorkOffset(size_t width, size_t height, size_t depth);
+
     QCLWorkSize bestLocalWorkSizeImage2D() const;
     QCLWorkSize bestLocalWorkSizeImage3D() const;
 

@@ -179,12 +179,14 @@ public:
         , id(kid)
         , globalWorkSize(1)
         , localWorkSize(0)
+        , globalWorkOffset(0, 0, 0)
     {}
     QCLKernelPrivate(const QCLKernelPrivate *other)
         : context(other->context)
         , id(other->id)
         , globalWorkSize(other->globalWorkSize)
         , localWorkSize(other->localWorkSize)
+        , globalWorkOffset(0, 0, 0)
     {
         if (id)
             clRetainKernel(id);
@@ -200,6 +202,7 @@ public:
         context = other->context;
         globalWorkSize = other->globalWorkSize;
         localWorkSize = other->localWorkSize;
+        globalWorkOffset = other->globalWorkOffset;
         if (id != other->id) {
             if (id)
                 clReleaseKernel(id);
@@ -213,6 +216,7 @@ public:
     cl_kernel id;
     QCLWorkSize globalWorkSize;
     QCLWorkSize localWorkSize;
+    QCLWorkSize globalWorkOffset;
 };
 
 /*!
@@ -510,6 +514,18 @@ void QCLKernel::setLocalWorkSize(const QCLWorkSize &size)
 }
 
 /*!
+    Sets the global work offset for this instance of the kernel to \a width, \a height, \a width.
+
+    \sa setGlobalWorkOffset()
+*/
+void QCLKernel::setGlobalWorkOffset(size_t width, size_t height, size_t depth)
+{
+    Q_D(QCLKernel);
+    d->globalWorkOffset = QCLWorkSize(width, height, depth);
+}
+
+
+/*!
     Returns the recommended best local work size for 2D image processing
     on this kernel.  Default value is 8x8 unless the maximum work size
     is not large enough to accomodate 8x8 items.
@@ -752,7 +768,7 @@ QCLEvent QCLKernel::run()
     cl_event event;
     cl_int error = clEnqueueNDRangeKernel
         (d->context->activeQueue(), m_kernelId, d->globalWorkSize.dimensions(),
-         0, d->globalWorkSize.sizes(),
+         d->globalWorkOffset.sizes(), d->globalWorkSize.sizes(),
          (d->localWorkSize.width() ? d->localWorkSize.sizes() : 0),
          0, 0, &event);
     d->context->reportError("QCLKernel::run:", error);
