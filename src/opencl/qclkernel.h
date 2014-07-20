@@ -359,14 +359,14 @@ inline void QCLKernel::setArg(int index, const QVector2D &value)
     if (sizeof(value) == (sizeof(float) * 2)) {
         clSetKernelArg(m_kernelId, index, sizeof(value), &value);
     } else {
-        float values[2] = {value.x(), value.y()};
+        float values[2] = {float(value.x()), float(value.y())};
         clSetKernelArg(m_kernelId, index, sizeof(values), values);
     }
 }
 
 inline void QCLKernel::setArg(int index, const QVector3D &value)
 {
-    float values[4] = {value.x(), value.y(), value.z(), 1.0f};
+    float values[4] = {float(value.x()), float(value.y()), float(value.z()), 1.0f};
     clSetKernelArg(m_kernelId, index, sizeof(values), values);
 }
 
@@ -375,14 +375,14 @@ inline void QCLKernel::setArg(int index, const QVector4D &value)
     if (sizeof(value) == (sizeof(float) * 4)) {
         clSetKernelArg(m_kernelId, index, sizeof(value), &value);
     } else {
-        float values[4] = {value.x(), value.y(), value.z(), value.w()};
+        float values[4] = {float(value.x()), float(value.y()), float(value.z()), float(value.w())};
         clSetKernelArg(m_kernelId, index, sizeof(values), values);
     }
 }
 
 inline void QCLKernel::setArg(int index, const QPoint &value)
 {
-    cl_int values[2] = {value.x(), value.y()};
+    cl_int values[2] = {int(value.x()), int(value.y())};
     clSetKernelArg(m_kernelId, index, sizeof(values), values);
 }
 
@@ -391,7 +391,7 @@ inline void QCLKernel::setArg(int index, const QPointF &value)
     if (sizeof(value) == (sizeof(float) * 2)) {
         clSetKernelArg(m_kernelId, index, sizeof(value), &value);
     } else {
-        float values[2] = {value.x(), value.y()};
+        float values[2] = {float(value.x()), float(value.y())};
         clSetKernelArg(m_kernelId, index, sizeof(values), values);
     }
 }
