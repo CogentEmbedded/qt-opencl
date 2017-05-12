@@ -15,7 +15,7 @@ else:DESTDIR = ../../lib
 
 LIBS += -L../../lib -L../../bin
 win32 {
-    LIBS += -lQtOpenCL
+    LIBS += -lQt5OpenCL
     !isEmpty(QMAKE_INCDIR_OPENCL) {
         QMAKE_CXXFLAGS += -I$$QMAKE_INCDIR_OPENCL
     }
@@ -28,7 +28,7 @@ win32 {
         LIBS += -lOpenCL
     }
 } else {
-    LIBS += -lQtOpenCL
+    LIBS += -lQt5OpenCL
 }
 
 LIBS += -lOpenCL
@@ -54,3 +54,5 @@ PRIVATE_HEADERS += \
 
 HEADERS += $$PRIVATE_HEADERS
 DEFINES += QT_BUILD_CLGL_LIB
+
+load(qt_module)

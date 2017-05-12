@@ -76,3 +76,5 @@ DEFINES += QT_BUILD_CL_LIB
 opencl_1_1 {
     DEFINES += QT_OPENCL_1_1
 }
+
+load(qt_module)

@@ -1,5 +1,5 @@
 INCLUDEPATH += $$PWD
-LIBS += -lQtOpenCL
+LIBS += -lQt5OpenCL
 macx:!opencl_configure {
     LIBS += -framework OpenCL
 }
