@@ -48,6 +48,21 @@
 #include <QtConcurrent/qtconcurrentcompilertest.h>
 #include <Qt/qtconcurrentcompilertest.h>
 
+/*
+   These functions make it possible to use standard C++ functions with
+   a similar name from Qt header files (especially template classes).
+*/
+/// HACK H-A-C-K
+Q_CORE_EXPORT void *qMalloc(size_t size);
+Q_CORE_EXPORT void qFree(void *ptr);
+Q_CORE_EXPORT void *qRealloc(void *ptr, size_t size);
+Q_CORE_EXPORT void *qMallocAligned(size_t size, size_t alignment);
+Q_CORE_EXPORT void *qReallocAligned(void *ptr, size_t size, size_t oldsize, size_t alignment);
+Q_CORE_EXPORT void qFreeAligned(void *ptr);
+Q_CORE_EXPORT void *qMemCopy(void *dest, const void *src, size_t n);
+Q_CORE_EXPORT void *qMemSet(void *dest, int c, size_t n);
+
+
 #define QT_OPENCL_1_1
 #define QT_TYPENAME typename
 
