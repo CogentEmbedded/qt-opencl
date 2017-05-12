@@ -1,4 +1,6 @@
 TEMPLATE = app
+QT += widgets
+LIBS += -lOpenCL
 TARGET = pathdrawing
 DEPENDPATH += .
 INCLUDEPATH += .

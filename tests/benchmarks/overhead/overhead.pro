@@ -6,5 +6,6 @@ SOURCES += tst_overhead.cpp
 RESOURCES += overhead.qrc
 
 LIBS += -L../../../lib -L../../../bin
+LIBS += -lOpenCL
 
 include(../../../src/opencl/opencl_dep.pri)

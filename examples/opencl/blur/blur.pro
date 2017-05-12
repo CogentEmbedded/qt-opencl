@@ -1,5 +1,7 @@
 TEMPLATE = app
 TARGET = blur
+QT += widgets
+LIBS += -lOpenCL
 DEPENDPATH += .
 INCLUDEPATH += .
 

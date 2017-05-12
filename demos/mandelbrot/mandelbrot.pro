@@ -4,6 +4,8 @@
 
 TEMPLATE = app
 TARGET = mandelbrot
+QT += widgets
+LIBS += -lOpenCL
 DEPENDPATH += .
 INCLUDEPATH += .
 

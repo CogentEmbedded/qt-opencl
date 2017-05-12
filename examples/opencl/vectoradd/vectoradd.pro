@@ -4,5 +4,6 @@ CONFIG += qt debug warn_on
 SOURCES = vectoradd.cpp
 RESOURCES = vectoradd.qrc
 LIBS += -L../../../lib -L../../../bin
+LIBS += -lOpenCL
 
 include(../../../src/opencl/opencl_dep.pri)

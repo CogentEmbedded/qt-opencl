@@ -30,6 +30,9 @@ win32 {
 } else {
     LIBS += -lQtOpenCL
 }
+
+LIBS += -lOpenCL
+
 macx:!opencl_configure {
     LIBS += -framework OpenCL
 }

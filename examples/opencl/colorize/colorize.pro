@@ -1,5 +1,7 @@
 TEMPLATE = app
 TARGET = colorize
+QT += widgets
+LIBS += -lOpenCL
 DEPENDPATH += .
 INCLUDEPATH += .
 

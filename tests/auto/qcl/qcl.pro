@@ -1,6 +1,7 @@
 load(qttest_p4.prf)
 TEMPLATE=app
 QT += testlib
+LIBS += -lOpenCL
 CONFIG += unittest warn_on
 
 SOURCES += tst_qcl.cpp

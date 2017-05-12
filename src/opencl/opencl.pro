@@ -30,6 +30,8 @@ macx:!opencl_configure {
     LIBS += -framework OpenCL
 }
 
+LIBS += -lOpenCL
+
 HEADERS += \
     qclbuffer.h \
     qclcommandqueue.h \

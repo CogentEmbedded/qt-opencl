@@ -1,5 +1,7 @@
 TEMPLATE=app
 QT += testlib
+QT += widgets
+LIBS += -lOpenCL
 CONFIG += unittest warn_on
 
 SOURCES += tst_mandelbrot.cpp

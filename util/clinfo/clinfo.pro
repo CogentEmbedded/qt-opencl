@@ -1,5 +1,6 @@
 TARGET = clinfo
 
+LIBS += -lOpenCL
 SOURCES += \
     clinfo.cpp \
 
